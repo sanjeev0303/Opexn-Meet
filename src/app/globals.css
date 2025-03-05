@@ -94,29 +94,51 @@ text-transform: uppercase;
 
 /* ==== clerk class override ===== */
 .cl-userButtonPopoverActionButtonIcon {
-  color: white;
-}
+    color: white;
+  }
 
-.cl-logoBox {
-  height: 40px;
-}
+  /* .cl-logoBox {
+    height: 40px;
+  } */
 
-.cl-dividerLine {
-  background: #252a41;
-  height: 2px;
-}
+  .cl-dividerLine {
+    background: #252a41;
+    height: 2px;
+  }
 
-.cl-socialButtonsIconButton {
-  border: 3px solid #565761;
-}
+  .cl-socialButtonsIconButton {
+    border: 3px solid #565761;
+  }
 
-.cl-internal-wkkub3 {
-  color: white;
-}
+  .cl-internal-wkkub3 {
+    color: white;
+  }
 
-.cl-userButtonPopoverActionButton {
-  color: white;
-}
+  .cl-userButtonPopoverActionButton {
+    color: white;
+  }
+
+  .cl-internal-1dauvpw{
+      opacity: 0;
+      height: 0px;
+      padding: 0px;
+  }
+
+  .cl-internal-yelct8{
+      height: 0px;
+  }
+
+  .cl-internal-qo3qk7{
+      gap: 10px;
+  }
+
+  .cl-internal-laksia{
+      font-size: 15px
+  }
+
+  .cl-internal-hrrh4y{
+      font-size: 15px
+  }
 
 /* =============================== */
 @layer utilities {

@@ -6,7 +6,7 @@ import Sidebar from '@/components/Sidebar';
 
 
 export const metadata: Metadata = {
-    title: "ZOOM",
+    title: "OPEXN MEET",
     description: "Video calling app",
     icons: {
       icon: '/icons/logo.svg'
