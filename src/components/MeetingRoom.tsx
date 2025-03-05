@@ -27,8 +27,8 @@ import Image from "next/image";
 
 type CallLayoutType = "grid" | "speaker-left" | "speaker-right";
 
-const cloudinaryUrl =
-  "https://res.cloudinary.com/dng61q3lg/image/upload/v1741110942/exhibitor-images/uivs1nphtjpz67vgbsoz.jpg";
+// const cloudinaryUrl =
+//   "https://res.cloudinary.com/dng61q3lg/image/upload/v1741110942/exhibitor-images/uivs1nphtjpz67vgbsoz.jpg";
 
 const MeetingRoom = () => {
   const searchParams = useSearchParams();
