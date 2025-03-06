@@ -75,7 +75,7 @@ const MeetingRoom = () => {
               height={30}
               className="rounded-full lg:size-8 md:size-8 sm:w-4 sm:h-4 mt-[4px]"
             />
-            <h1 className="lg:text-md md:text-md font-semibold text-xs">
+            <h1 className="lg:text-[1rem] md:text-[1rem] font-semibold sm:text-[0.7rem]">
               Narayani Award
             </h1>
           </div>
@@ -101,7 +101,7 @@ const MeetingRoom = () => {
           </div>
 
           <div>
-            <h1 className="uppercase text-[10px]">
+            <h1 className="uppercase text-[0.6rem]">
               {participant.name}
             </h1>
           </div>
@@ -114,7 +114,7 @@ const MeetingRoom = () => {
               height={30}
               className="rounded-full sm:w-4 sm:h-4 "
             />
-            <h1 className=" font-semibold text-[10px] text-nowrap">
+            <h1 className=" font-semibold text-[0.7rem] text-nowrap">
               Narayani Award
             </h1>
           </div>
