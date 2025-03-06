@@ -50,7 +50,7 @@ const MeetingRoom = () => {
 
     return (
       <div className="border-[5px] lg:border-[10px] md:border-[10px] absolute w-full h-full rounded-lg">
-        <div className="bg-white w-full lg:h-9 md:h-9 h-6  p-2 flex justify-between items-center text-black lg:p-2 md:p-2 rounded-t-[3px] lg:rounded-t-none md:rounded-t-none">
+        <div className="bg-white w-full lg:h-9 md:h-9 h-4  p-2 flex justify-between items-center text-black lg:p-2 md:p-2 rounded-t-[3px] lg:rounded-t-none md:rounded-t-none">
           <div>
             <Image
               src="/images/opexn_logo.png"
@@ -73,7 +73,7 @@ const MeetingRoom = () => {
               alt="award"
               width={30}
               height={30}
-              className="rounded-full lg:size-8 md:size-8 sm:w-5 sm:h-5 mt-[4px]"
+              className="rounded-full lg:size-8 md:size-8 sm:w-4 sm:h-4 mt-[4px]"
             />
             <h1 className="lg:text-md md:text-md font-semibold text-xs">
               Narayani Award
@@ -83,6 +83,45 @@ const MeetingRoom = () => {
       </div>
     );
   };
+
+  const CustomParticipantViewUIBar = () => {
+    const { participant } = useParticipantViewContext();
+
+    return (
+      <div className="border-[5px] lg:border-[5px] md:border-[5px] absolute w-full h-full rounded-lg">
+        <div className="bg-white w-full h-4  p-2 flex justify-between items-center text-black lg:p-2 md:p-2 rounded-t-[3px] lg:rounded-t-none md:rounded-t-none">
+          <div>
+            <Image
+              src="/images/opexn_logo.png"
+              alt="logo"
+              width={50}
+              height={50}
+              className="rounded-full lg:size-8 md:size-8 size-4 sm:w-4 sm:h-4"
+            />
+          </div>
+
+          <div>
+            <h1 className="uppercase text-[10px]">
+              {participant.name}
+            </h1>
+          </div>
+
+          <div className="flex gap-[2px] items-center">
+            <Image
+              src="/images/incubation.png"
+              alt="award"
+              width={30}
+              height={30}
+              className="rounded-full sm:w-4 sm:h-4 "
+            />
+            <h1 className=" font-semibold text-[10px] text-nowrap">
+              Narayani Award
+            </h1>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   const CallLayout = () => {
     switch (layout) {
@@ -95,7 +134,7 @@ const MeetingRoom = () => {
         return (
           <SpeakerLayout
             participantsBarPosition="left"
-            ParticipantViewUIBar={CustomParticipantViewUI}
+            ParticipantViewUIBar={CustomParticipantViewUIBar}
             ParticipantViewUISpotlight={CustomParticipantViewUI}
           />
         );
