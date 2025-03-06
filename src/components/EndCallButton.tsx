@@ -4,6 +4,7 @@ import { useCall, useCallStateHooks } from "@stream-io/video-react-sdk";
 import React from "react";
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
+import { currentUser } from "@clerk/nextjs/server";
 
 const EndCallButton = () => {
   const call = useCall();
@@ -20,6 +21,7 @@ const EndCallButton = () => {
   if (!isMeetingOwner) return null;
 
   return (
+   <>
     <Button
       onClick={async () => {
         await call.endCall();
@@ -29,6 +31,26 @@ const EndCallButton = () => {
     >
         End call for everyone
     </Button>
+
+    <Button
+      onClick={async () => {
+        const call = useCall()
+
+        const muteAllUsers = async() => {
+            if(!call) return;
+
+            const participants = call.state.participants
+            console.log(participants);
+
+        }
+
+        muteAllUsers()
+      }}
+      className="bg-red-500"
+    >
+        mute
+        </Button>
+   </>
   );
 };
 

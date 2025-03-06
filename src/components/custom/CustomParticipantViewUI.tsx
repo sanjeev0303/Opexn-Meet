@@ -1,6 +1,10 @@
 import { useParticipantViewContext } from "@stream-io/video-react-sdk";
 import Image from "next/image";
 
+
+
+
+
 export const CustomParticipantViewUI = () => {
     const { participant } = useParticipantViewContext();
 
