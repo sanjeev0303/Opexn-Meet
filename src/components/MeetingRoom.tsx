@@ -57,7 +57,7 @@ const MeetingRoom = () => {
               alt="logo"
               width={50}
               height={50}
-              className="rounded-full lg:size-full md:size-full size-10 sm:w-10 sm:h-10"
+              className="rounded-full lg:size-16 md:size-16 size-10 sm:w-10 sm:h-10"
             />
           </div>
 
