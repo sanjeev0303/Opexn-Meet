@@ -76,9 +76,7 @@ export const SpeakerView = () => {
   );
 };
 
-const CustomCallControls = ({ children }: PropsWithChildren<{}>) => {
-  return <div className="str-video__call-controls">{children}</div>;
-};
+
 
 /**
  * Creates a custom sorting preset for the participants list.
