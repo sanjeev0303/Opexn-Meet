@@ -47,6 +47,7 @@ export const SpeakerView = () => {
       <div className="spotlight">
         {call && participantInSpotlight && (
           <ParticipantView
+          mirror={false}
             participant={participantInSpotlight}
             trackType={
               hasScreenShare(participantInSpotlight)
@@ -63,6 +64,7 @@ export const SpeakerView = () => {
           {otherParticipants.map((participant) => (
             <div className="participant-tile" key={participant.sessionId}>
               <ParticipantView
+              mirror={false}
                 participant={participant}
                 ParticipantViewUI={CustomParticipantViewUIBar}
               />

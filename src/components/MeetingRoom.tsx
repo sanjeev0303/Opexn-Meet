@@ -130,7 +130,7 @@ const MeetingRoom = () => {
     switch (layout) {
         case "grid":
           return (
-             <PaginatedGridLayout ParticipantViewUI={CustomParticipantViewUI}  />
+             <PaginatedGridLayout ParticipantViewUI={CustomParticipantViewUI} mirrorLocalParticipantVideo={false} />
           );
 
       case "speaker-left":
@@ -139,6 +139,7 @@ const MeetingRoom = () => {
             participantsBarPosition="left"
             ParticipantViewUIBar={CustomParticipantViewUIBar}
             ParticipantViewUISpotlight={CustomParticipantViewUI}
+            mirrorLocalParticipantVideo={false}
           />
 
         );
@@ -149,7 +150,7 @@ const MeetingRoom = () => {
               participantsBarPosition="right"
               ParticipantViewUIBar={CustomParticipantViewUI}
               ParticipantViewUISpotlight={CustomParticipantViewUI}
-
+mirrorLocalParticipantVideo={false}
             />
           );
 
