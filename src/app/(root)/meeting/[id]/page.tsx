@@ -17,7 +17,8 @@ const MeetingPage = ({ params }: { params: { id: string } }) => {
     return <div>Loading...</div>;
   }
 
-
+  call?.camera.flip()
+  
 
   return (
     <main className="h-screen w-full text-white">
