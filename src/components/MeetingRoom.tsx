@@ -1,3 +1,4 @@
+"use client"
 import { cn } from "@/lib/utils";
 import {
   CallControls,
@@ -24,6 +25,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import EndCallButton from "./EndCallButton";
 import Loader from "./Loader";
 import Image from "next/image";
+import { IncomingVideoQualitySelector } from "./VideoQualitySelector";
+import { SpeakerView } from "./test/screen-view/SpeakerView";
 
 type CallLayoutType = "grid" | "speaker-left" | "speaker-right";
 
@@ -84,7 +87,7 @@ const MeetingRoom = () => {
     );
   };
 
-  const CustomParticipantViewUIBar = () => {
+ const CustomParticipantViewUIBar = () => {
     const { participant } = useParticipantViewContext();
 
     return (
@@ -127,7 +130,7 @@ const MeetingRoom = () => {
     switch (layout) {
         case "grid":
           return (
-            <PaginatedGridLayout ParticipantViewUI={CustomParticipantViewUI} />
+             <PaginatedGridLayout ParticipantViewUI={CustomParticipantViewUI} />
           );
 
       case "speaker-left":
@@ -137,21 +140,22 @@ const MeetingRoom = () => {
             ParticipantViewUIBar={CustomParticipantViewUIBar}
             ParticipantViewUISpotlight={CustomParticipantViewUI}
           />
+
         );
 
-      //   case "speaker-right":
-      //     return (
-      //       <SpeakerLayout
-      //         participantsBarPosition="right"
-      //         ParticipantViewUIBar={CustomParticipantViewUI}
-      //         ParticipantViewUISpotlight={CustomParticipantViewUI}
+        case "speaker-right":
+          return (
+            <SpeakerLayout
+              participantsBarPosition="right"
+              ParticipantViewUIBar={CustomParticipantViewUI}
+              ParticipantViewUISpotlight={CustomParticipantViewUI}
 
-      //       />
-      //     );
+            />
+          );
 
       default:
         return (
-          <PaginatedGridLayout ParticipantViewUI={CustomParticipantViewUI} />
+          <SpeakerView />
         );
         break;
     }
@@ -160,8 +164,8 @@ const MeetingRoom = () => {
   return (
     <section className="relative h-screen w-full overflow-hidden bg-[url('https://res.cloudinary.com/dng61q3lg/image/upload/v1741110942/exhibitor-images/uivs1nphtjpz67vgbsoz.jpg')] bg-cover bg-center text-white">
       <div className="relative top-0 flex size-full items-center justify-center">
-        <div className="flex size-full max-w-[1000px] p-2 ">
-          <CallLayout />
+        <div className="flex size-full max-w-[1000px] p-2 pb-14 ">
+          <SpeakerView />
         </div>
         <div
           className={cn(
@@ -189,7 +193,7 @@ const MeetingRoom = () => {
             </DropdownMenuTrigger>
           </div>
           <DropdownMenuContent
-            className="border-dark-1 bg-bark-1
+            className="border-dark-1 bg-[#19232d]
            text-white"
           >
             {["Grid", "Speaker-Left"].map((item, index) => (
@@ -213,7 +217,10 @@ const MeetingRoom = () => {
             <User size={20} className="text-white" />
           </div>
         </button>
-        {!isPersonalRoom && <EndCallButton />}
+
+        <IncomingVideoQualitySelector />
+
+         <EndCallButton />
       </div>
     </section>
   );
