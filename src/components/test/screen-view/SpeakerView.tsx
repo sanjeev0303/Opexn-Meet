@@ -28,6 +28,8 @@ import './SpeakerView.scss';
 import { getCustomSortingPreset } from '@/hooks/getCustomSorting';
 import { CustomParticipantViewUIBar } from '@/components/custom/CustomParticipantViewUIBar';
 import { CustomParticipantViewUI } from '@/components/custom/CustomParticipantViewUI';
+import clsx from 'clsx';
+import { cn } from '@/lib/utils';
 
 export const SpeakerView = () => {
   const call = useCall();
@@ -44,11 +46,11 @@ export const SpeakerView = () => {
 
   return (
    <div className='w-full'>
-     <div className="speaker-view">
+     <div className={cn("speaker-view", "max-sm:h-[80%]")}>
       {call && otherParticipants.length > 0 && (
         <div className="participants-bar">
           {otherParticipants.map((participant) => (
-            <div className="participant-tile" key={participant.sessionId}>
+            <div className="participant-tile " key={participant.sessionId}>
               <ParticipantView
                 participant={participant}
                 ParticipantViewUI={CustomParticipantViewUIBar}

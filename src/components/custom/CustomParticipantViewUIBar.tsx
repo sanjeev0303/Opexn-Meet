@@ -22,19 +22,6 @@ export const CustomParticipantViewUIBar = () => {
               {participant.name}
             </h1>
           </div>
-
-          <div className="flex gap-[2px] items-center">
-            <Image
-              src="/images/incubation.png"
-              alt="award"
-              width={30}
-              height={30}
-              className="rounded-full max-sm:size-4 max-sm:mt-[2px] lg:size-4 "
-            />
-            <h1 className=" font-semibold text-[0.7rem] text-nowrap pr-[3px]">
-              Narayani Award
-            </h1>
-          </div>
         </div>
       </div>
     );

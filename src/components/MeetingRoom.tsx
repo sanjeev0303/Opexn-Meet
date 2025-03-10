@@ -27,15 +27,17 @@ import Loader from "./Loader";
 import Image from "next/image";
 import { IncomingVideoQualitySelector } from "./VideoQualitySelector";
 import { SpeakerView } from "./test/screen-view/SpeakerView";
+import { CustomParticipantViewUI } from "./custom/CustomParticipantViewUI";
+import { CustomParticipantViewUIBar } from "./custom/CustomParticipantViewUIBar";
 
-type CallLayoutType = "grid" | "speaker-left" | "speaker-right";
+type CallLayoutType = "grid" | "speaker-center" | "speaker-right";
 
 
 const MeetingRoom = () => {
   const searchParams = useSearchParams();
   const isPersonalRoom = !!searchParams.get("personal");
 
-  const [layout, setLayout] = useState<CallLayoutType>("speaker-left");
+  const [layout, setLayout] = useState<CallLayoutType>("speaker-center");
   const [showParticipents, setShowParticipents] = useState(false);
 
   const { useCallCallingState } = useCallStateHooks();
@@ -44,85 +46,12 @@ const MeetingRoom = () => {
 
   const router = useRouter();
 
+
   if (callingState !== CallingState.JOINED) return <Loader />;
 
-  const CustomParticipantViewUI = () => {
-    const { participant } = useParticipantViewContext();
 
-    return (
-      <div className="border-[5px] lg:border-[10px] md:border-[10px] absolute w-full h-full rounded-lg">
-        <div className="bg-white w-full lg:h-9 md:h-9 h-6  p-2 flex justify-between items-center text-black lg:p-2 md:p-2 rounded-t-[3px] lg:rounded-t-none md:rounded-t-none">
-          <div>
-            <Image
-              src="/images/opexn_logo.png"
-              alt="logo"
-              width={50}
-              height={50}
-              className="rounded-full lg:size-16 md:size-16 size-10 sm:w-10 sm:h-10"
-            />
-          </div>
 
-          <div>
-            <h1 className="uppercase lg:text-md md:text-md text-xs">
-              {participant.name}
-            </h1>
-          </div>
 
-          <div className="flex gap-1 items-center">
-            <Image
-              src="/images/incubation.png"
-              alt="award"
-              width={30}
-              height={30}
-              className="rounded-full lg:size-8 md:size-8 sm:w-4 sm:h-4 mt-[4px]"
-            />
-            <h1 className="lg:text-[1rem] md:text-[1rem] font-semibold sm:text-[0.7rem]">
-              Narayani Award
-            </h1>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
- const CustomParticipantViewUIBar = () => {
-    const { participant } = useParticipantViewContext();
-
-    return (
-      <div className="border-[5px] lg:border-[5px] md:border-[5px] absolute w-full h-full rounded-lg">
-        <div className="bg-white w-full h-4  p-2 flex justify-between items-center text-black lg:p-2 md:p-2 rounded-t-[3px] lg:rounded-t-none md:rounded-t-none">
-          <div>
-            <Image
-              src="/images/opexn_logo.png"
-              alt="logo"
-              width={50}
-              height={50}
-              className="rounded-full lg:size-8 md:size-8 size-4 sm:w-4 sm:h-4"
-            />
-          </div>
-
-          <div>
-            <h1 className="uppercase text-[0.6rem]">
-              {participant.name}
-            </h1>
-          </div>
-
-          <div className="flex gap-[2px] items-center">
-            <Image
-              src="/images/incubation.png"
-              alt="award"
-              width={30}
-              height={30}
-              className="rounded-full sm:w-4 sm:h-4 "
-            />
-            <h1 className=" font-semibold text-[0.7rem] text-nowrap">
-              Narayani Award
-            </h1>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   const CallLayout = () => {
     switch (layout) {
@@ -131,26 +60,27 @@ const MeetingRoom = () => {
              <PaginatedGridLayout ParticipantViewUI={CustomParticipantViewUI} mirrorLocalParticipantVideo={false} />
           );
 
-      case "speaker-left":
+      case "speaker-center":
         return (
-          <SpeakerLayout
-            participantsBarPosition="left"
-            ParticipantViewUIBar={CustomParticipantViewUIBar}
-            ParticipantViewUISpotlight={CustomParticipantViewUI}
-            mirrorLocalParticipantVideo={false}
-          />
+        //   <SpeakerLayout
+        //     participantsBarPosition="left"
+        //     ParticipantViewUIBar={CustomParticipantViewUIBar}
+        //     ParticipantViewUISpotlight={CustomParticipantViewUI}
+        //     mirrorLocalParticipantVideo={false}
+        //   />
+        <SpeakerView />
 
         );
 
-        case "speaker-right":
-          return (
-            <SpeakerLayout
-              participantsBarPosition="right"
-              ParticipantViewUIBar={CustomParticipantViewUI}
-              ParticipantViewUISpotlight={CustomParticipantViewUI}
-mirrorLocalParticipantVideo={false}
-            />
-          );
+//         case "speaker-right":
+//           return (
+//             <SpeakerLayout
+//               participantsBarPosition="right"
+//               ParticipantViewUIBar={CustomParticipantViewUI}
+//               ParticipantViewUISpotlight={CustomParticipantViewUI}
+// mirrorLocalParticipantVideo={false}
+//             />
+//           );
 
       default:
         return (
@@ -161,10 +91,10 @@ mirrorLocalParticipantVideo={false}
   };
 
   return (
-    <section className="relative h-screen w-full overflow-hidden text-white">
-      <div className="relative top-0 flex size-full items-center justify-center">
-        <div className="flex size-full lg:max-w-[1000px] p-2 pb-14 ">
-          <SpeakerView />
+    <section className="relative h-dvh w-full text-white flex overflow-y-auto flex-col">
+      <div className="top-0 flex size-full items-center justify-center">
+        <div className="flex size-full lg:max-w-[1000px] p-2">
+          <CallLayout />
         </div>
         <div
           className={cn(
@@ -178,6 +108,7 @@ mirrorLocalParticipantVideo={false}
         </div>
       </div>
 
+      <div className="max-md:pt-10">
       <div className="fixed bottom-0 flex w-full items-center justify-center gap-5 flex-wrap">
         <CallControls
           onLeave={() => {
@@ -195,7 +126,7 @@ mirrorLocalParticipantVideo={false}
             className="border-dark-1 bg-[#19232d]
            text-white"
           >
-            {["Grid", "Speaker-Left"].map((item, index) => (
+            {["Grid", "Speaker-Center"].map((item, index) => (
               <div key={index}>
                 <DropdownMenuItem
                   className="cursor-pointer"
@@ -220,6 +151,7 @@ mirrorLocalParticipantVideo={false}
         <IncomingVideoQualitySelector />
 
          <EndCallButton />
+      </div>
       </div>
     </section>
   );
