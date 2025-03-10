@@ -27,18 +27,6 @@ export const CustomParticipantViewUI = () => {
             </h1>
           </div>
 
-          <div className="flex gap-1 items-center">
-            <Image
-              src="/images/incubation.png"
-              alt="award"
-              width={30}
-              height={30}
-              className="rounded-full lg:size-8 md:size-8 sm:w-4 sm:h-4 mt-[4px]"
-            />
-            <h1 className="lg:text-[1rem] md:text-[1rem] font-semibold sm:text-[0.7rem]">
-              Narayani Award
-            </h1>
-          </div>
         </div>
       </div>
     );
