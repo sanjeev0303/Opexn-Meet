@@ -10,13 +10,11 @@
       align-items: center;
       justify-content: center;
       min-height: 0;
-      padding-top: 100px;
 
       .str-video__participant-view {
         height: 100%;
         width: auto;
         aspect-ratio: auto;
-        transform: scaleX(-1);
       }
 
       .str-video__participant-view--no-video {
@@ -43,10 +41,9 @@
 
         .str-video__participant-view {
           aspect-ratio: auto;
-
           height: 150px;
-            width: 110%;
-            transform: scaleX(-1);
+          width: 100%;
+          position: relative;
         }
 
         &:first-child {
