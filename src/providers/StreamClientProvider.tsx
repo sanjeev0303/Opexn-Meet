@@ -45,6 +45,8 @@ const StreamVideoProvider = ({ children }: { children: React.ReactNode }) => {
       tokenProvider,
     });
 
+    client.createGuestUser
+
     console.log("Checkpoint 8: StreamVideoClient instance created", client);
 
     setVideoClient(client);

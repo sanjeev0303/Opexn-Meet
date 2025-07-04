@@ -140,6 +140,10 @@ text-transform: uppercase;
       font-size: 15px
   }
 
+  .cl-internal-1dauvpw{
+    padding: 0px;
+  }
+
 /* =============================== */
 @layer utilities {
   .flex-center {
